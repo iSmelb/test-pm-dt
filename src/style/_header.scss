@@ -1,0 +1,140 @@
+.header {
+    background: url('../images/header_bg.png');
+    color: #fff;
+    padding: 10px 0 20px;
+}
+
+.top_bar {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    position: relative;
+}
+
+.role_menu {
+    margin-right: 10px;
+}
+
+.role_menu,
+.language {
+    position: relative;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    > span {
+        position: relative;
+        font-size: $base_fz_mob - 3px;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    
+        .arrow {
+            display: block;
+            width: 9px;
+            height: 9px;
+            border: solid #fff;
+            border-width: 1px 1px 0 0;
+            transform: rotate(135deg);
+            position: absolute;
+            top: 0;
+            right: -13px;
+        }
+            
+    }
+
+    ul.show {
+        list-style: none;
+        position: absolute;
+        top: 17px;
+        right: -13px;
+        border: 1px solid #fff;
+        background-color: #ffffff57;
+        border-radius: 8px;
+        z-index: 1;
+
+        li {
+            padding: 3px 5px;
+
+            &:hover {
+                cursor: pointer;
+                background-color: #ffffff57;
+            }
+        }
+    }
+
+    ul.hide {
+        display: none;
+    }
+}
+
+.language {
+    font-weight: 300;
+    color: #EAEAEA
+}
+
+.lang_login {
+    
+    .logout {
+        position: absolute;
+        top: calc(100% + 17px);
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: $base_fz_mob - 2px;
+    }
+
+    .login {
+        display: none;
+    }
+}
+
+
+.search_bar {
+    margin-top: 63px;
+
+    .searchInput,
+    .searchInputCity {
+        display: flex;
+        width: 100%;
+        border-radius: 8px;
+        padding: 12px;
+        background-color: rgba(255, 255, 255, 0.15);
+        margin-bottom: 12px;
+
+        .searchIcon:hover {
+            color: rgb(199, 199, 199);
+            cursor: pointer;
+        }
+
+        input {
+            width: 100%;
+            background: none;
+            border: none;
+            color: #fff;
+            outline: none;
+            margin-left: 15px;
+            font-weight: 300;
+
+            &::placeholder {
+                color: #fff;
+            }
+        }
+    }
+
+    .searchButton {
+        width: 100%;
+        padding: 14px;
+        background-color: #fff;
+        border: none;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: 600;
+
+        &:hover {
+            background-color: rgb(199, 199, 199);
+            cursor: pointer;
+        }
+    }
+}

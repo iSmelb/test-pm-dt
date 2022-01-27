@@ -1,9 +1,14 @@
-import './App.css';
+import Footer from './component/Footer';
+import Header from './component/Header';
+import HomePage from './component/HomePage';
+import './style/app.scss'
 
 function App() {
   return (
-    <div className="App">
-
+    <div className="wrapper">
+      <Header/>
+      <HomePage/>
+      <Footer/>
     </div>
   );
 }

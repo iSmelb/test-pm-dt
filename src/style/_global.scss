@@ -1,0 +1,29 @@
+body {
+    font-family: 'Montserrat', 'Arial', sans-serif;
+    font-size: $base_fz_mob;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-width: 375px;
+    overflow: hidden;
+  }
+
+  .main {
+    flex-grow: 1;
+}
+
+.conteiner {
+    max-width:1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.conteiner_for_header {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-left: 26px;
+    padding-right: 26px;
+}
