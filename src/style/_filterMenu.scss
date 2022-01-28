@@ -1,0 +1,280 @@
+.filter_menu {
+    background-color: #fff;
+    color: $color_dakr;
+    padding: 20px 20px 35px;
+    left: 0;
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    &.hide {
+        display: none;
+    }
+
+    > div:nth-of-type(n+2) {
+        margin-bottom: 15px;
+    }
+
+    .closeMenu {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        margin-left: auto;
+        margin-bottom: 30px;
+        position: relative;
+        box-shadow: 0 0 20px rgba(13, 74, 145, 0.15);
+
+        &::after,
+        &::before {
+            content: "";
+            width: 18px;
+            height: 2px;
+            background-color:  $color_dakr_blue;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+
+        &::after {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        &::before {
+            transform: translate(-50%, -50%) rotate(135deg);
+        }
+    }
+
+    h2 {
+        font-size: $base_fz_mob + 8px;
+        font-weight: 500;
+        margin-bottom: 15px;
+    }
+
+    h4 {
+        font-weight: 500;
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    .underline {
+        display: block;
+        height: 1px;
+        background-color: $color_stroke;
+        margin-bottom: 20px;
+    }
+
+    .filter_photo {
+        font-size: $base_fz_mob - 2px;
+        font-weight: 300;
+        display: flex;
+        justify-content: space-between;
+        padding: 18px;
+    }
+
+    .MuiSlider-root {
+        color: $color_dakr_blue;
+
+        .MuiSlider-rail {
+            color: $color_stroke;
+        }
+
+        .MuiSlider-track {
+            height: 1px;
+        }
+
+        .MuiSlider-thumb[data-index="1"] {
+            width: 23px;
+            height: 23px;
+            margin-top: -11px;
+            border: 4px solid $color_dakr_blue;
+            background-color: #fff;
+        }
+    }
+
+    .filter_age,
+    .filter_gender,
+    .filter_offer,
+    .filter_experience,
+    .filter_language,
+    .filter_employment,
+    .filter_education {
+        padding: 14px;
+    }
+
+    .filter_age,
+    .filter_offer {
+
+        p {
+            text-align: center;
+            input {
+                width: 80px;
+                padding: 8px 0;
+                text-align: center;
+                margin: 0 10px;
+                border: none;
+                border: 1px solid;
+                border-color: $color_stroke;
+                outline: none;
+            }
+        }
+    }
+
+    .filter_gender {
+
+        h4 {
+            color: $color_dakr_blue;
+        }
+
+        button {
+            font-size: $base_fz_mob - 2px;
+            padding: 14px 12px;
+            width: 100px;
+            border: none;
+            border: 1px solid $color_dakr_blue;
+            background: none;
+            margin: 0 auto;
+
+            &:nth-of-type(2) {
+                border-width: 1px 0;
+            }
+
+            &:hover {
+                color: #fff;
+                background-color: $color_dakr_blue;
+            }
+
+            .active {
+                color: #fff;
+                background-color: $color_dakr_blue;
+            }
+        }
+    }
+
+    .filter_offer {
+
+        p {
+            margin-bottom: 30px;
+
+            > span {
+                position: relative;
+            }
+
+            .arrow {
+                top: 2px;
+                border-color: $color_dakr;
+            }
+        }
+        
+        .hide_without_paypal {
+            font-size: $base_fz_mob - 2px;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+
+    .filter_experience {
+        font-size: $base_fz_mob - 2px;
+
+        .experience_checkboxes {
+            margin-bottom: 30px;
+
+            div {
+                display: flex;
+                justify-content: space-between;
+                margin: 0 0 19px;
+            }
+        }
+
+        .only_students {
+            font-weight: 300;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+
+    .filter_language {
+        font-size: $base_fz_mob - 2px;
+        color: $color_text_light;
+
+        h4{
+            font-size: $base_fz_mob;
+        }
+
+        .checkbox_language {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin: 0 0 19px;
+
+            span::before {
+                top: 2px;
+            }
+
+            img {
+                display: inline-block;
+                margin-bottom: -4px;
+            }
+
+            > span {
+                position: relative;
+                margin-right: 33px;
+            }
+
+            .arrow {
+                border-color: $color_dakr;
+                right: -33px;
+
+                &.reverse {
+                    top: 4px;
+                    transform: rotate(315deg);
+                }
+            }
+        }
+
+        .radio_language.hide {
+            display: none;
+        }
+
+        .radio_language {
+            list-style: none;
+            display: block;
+            width: 270px;
+            width: 85%;
+            margin: 20px auto 0;
+
+            input[type="radio"] {
+                width: 16px;
+                height: 16px;
+                position: relative;
+                top: 2px;
+                margin-right: 10px;
+
+                &:checked {
+                    background-color: $color_yelow_dark;
+                }
+            }
+
+            li {
+                display: flex;
+                justify-content: space-between;
+                padding: 5px;
+                margin-bottom: 13px;
+            }
+        }
+    }
+
+    .filter_employment,
+    .filter_education {
+
+        font-size: $base_fz_mob - 2px;
+        color: $color_text_light;
+
+        .employment_item,
+        .education_item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+    }
+}

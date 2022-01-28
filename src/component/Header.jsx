@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faSearch, faMapMarkerAlt, faGlobe } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faSearch, faMapMarkerAlt, faGlobe, } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useState } from 'react';
 
 

@@ -29,20 +29,7 @@
 
         &:hover {
             text-decoration: underline;
-        }
-    
-        .arrow {
-            display: block;
-            width: 9px;
-            height: 9px;
-            border: solid #fff;
-            border-width: 1px 1px 0 0;
-            transform: rotate(135deg);
-            position: absolute;
-            top: 0;
-            right: -13px;
-        }
-            
+        }    
     }
 
     ul.show {
@@ -72,7 +59,7 @@
 
 .language {
     font-weight: 300;
-    color: #EAEAEA
+    color: $color_stroke;
 }
 
 .lang_login {
