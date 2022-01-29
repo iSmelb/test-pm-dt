@@ -2,20 +2,20 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faHeart, faEllipsisV} from '@fortawesome/free-solid-svg-icons';
 import {faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
+import { connect } from 'react-redux';
 
-function UserCardMini() {
-
+function UserCardMini({summary}) {
     const [like, setLike] = useState(false)
     const [settings, setSettings] = useState(false)
 
     return (
         <div className='user_card'>
             <div className='photo'>
-                    <img src='' alt='photo' />
-                </div>
+                {summary.photo && <img src={summary.photo} alt='photo' /> }
+            </div>
             <div className='info'>
                 <div className='main_info'>
-                    <h3>Продавец - консультант</h3>
+                    <h3>{summary.category}</h3>
                     <p>Дмитрий, 23 года</p>
                     <p style={{fontSize: '13px'}}>
                         <FontAwesomeIcon style={{marginRight: '12px'}} icon={faMapMarkerAlt}/>
@@ -23,12 +23,14 @@ function UserCardMini() {
                     </p>
                 </div>
                 <div className='desiredposition'>
-                    <p>Координатор BALOX Agency - 4 мес.</p>
-                    <p>Оператор кол центра в DELTA - 11 мес.</p>
+                    <p>{summary.desiredposition[0] ? summary.desiredposition[0].position : 'default_position'}</p>
+                    <p>{summary.desiredposition[1] ? summary.desiredposition[1].position : 'default_position'}</p>
                 </div>
                 <div className='status'>
-                    <span>Онлайн</span>
-                    <p>Обновлено 9 минут назад</p>
+                    <span className={summary.status ? 'online' : 'offline'}>
+                        {summary.status ? 'Онлайн' : 'Оффлайн'}
+                    </span>
+                    <p>Обновлено {summary.updated_at}</p>
                 </div>
             </div>
             <div className='like_or_hide'>
@@ -40,7 +42,7 @@ function UserCardMini() {
                 </div>
                 <div className='hide'>
                     <FontAwesomeIcon onClick={() => setSettings(!settings)} icon={faEllipsisV}/>
-                    <div className={`settings ${!settings && 'hide'}`}>
+                    <div className={`settings ${settings === false && 'hide'}`}>
                         <p>Пожаловаться</p>
                         <p>Скрыть карндидата</p>
                     </div>

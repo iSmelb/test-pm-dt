@@ -59,6 +59,37 @@
             font-size: 26px;
         }
     }
+
+    .pages {
+        display: flex;
+        flex-wrap: wrap;
+
+        span {
+            margin-right: 16px;
+
+            &.page {
+                color: #A6A6A6;
+            }
+            
+            &.current_page {
+                position: relative;
+                color: #fff;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 26px;
+                    height: 26px;
+                    border-radius: 50%;
+                    background-color: $color_dakr_blue;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    z-index: -1;
+                }
+            }
+        }
+    }
 }
 
 
@@ -116,9 +147,25 @@
         font-size: $base_fz_mob - 4px;
 
         span {
-            color: #4CAF50;
+            
             display: block;
             margin-bottom: 24px;
+
+            &.online {
+                color: #4CAF50;
+
+                &::before {
+                    background-color: #4CAF50;
+                }
+            }
+
+            &.offline {
+                color: #ff0000;
+
+                &::before {
+                    background-color: #ff0000;
+                }
+            }
 
             &::before {
                 content: '';
@@ -127,7 +174,7 @@
                 height: 12px;
                 margin-right: 4px;
                 border-radius: 50%;
-                background-color: #4CAF50;
+                
                 position: relative;
                 top: 1px;
             }
@@ -155,6 +202,10 @@
 
             p {
                 margin: 0 0 20px;
+
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
             }
 
             .settings {
