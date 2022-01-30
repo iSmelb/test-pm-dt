@@ -1,4 +1,7 @@
 export const loading_summaries = 'loading_summaries'
+export const loading_summariesWithPhoto = 'loading_summariesWithPhoto'
+export const switch_filtres_with_photo = 'switch_filtres_with_photo'
+export const change_current_page = 'change_current_page'
 export const switch_filtres = 'switch_filtres'
 export const show_loader = 'show_loader'
 export const hide_loader = 'hide_loader'

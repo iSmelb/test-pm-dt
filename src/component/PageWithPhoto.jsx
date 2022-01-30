@@ -3,22 +3,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMemoizations } from '../hooks/useMemoizations';
-import { changeCurrentPage, fetchSumarries, switchFiltresStatus } from '../redux/actions';
+import { changeCurrentPage, fetchSumarries, fetchSumarriesWhithPhoto, switchFiltresStatus } from '../redux/actions';
 import FilterMenu from './FilterMenu/FilterMenu';
-import Loader from './UI/loader/Loader';
 import UserCardMini from './UserCard/UserCardMini';
 
-function HomePage() {
+function PageWithPhoto() {
 
     const currentPage = useSelector(state => state.summaries.currentPage)
     const pageCount = useSelector(state => state.summaries.pageCount)
     const summaries = useSelector(state => state.summaries.fetchedSummaries)
-    const loading = useSelector(state => state.app.loading)
     let pagesArray = useMemoizations(pageCount)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(fetchSumarries(currentPage))
+        dispatch(fetchSumarriesWhithPhoto(currentPage))
     }, [currentPage])
 
     const changePage = (page) => {
@@ -43,10 +41,7 @@ function HomePage() {
                         </div>
                     </div>
                 </div>
-                {loading
-                    ? <div><Loader/></div>
-                    : summaries.map(summary => <UserCardMini key={summary.id} summary={summary} />)
-                }
+                {summaries.map(summary => <UserCardMini key={summary.id} summary={summary} />)}
                 <FilterMenu />
                 <div className='pages'>
                     <button
@@ -73,4 +68,4 @@ function HomePage() {
     );
 }
 
-export default HomePage;
+export default PageWithPhoto;

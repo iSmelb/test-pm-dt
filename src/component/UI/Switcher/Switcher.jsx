@@ -1,11 +1,11 @@
 import React from 'react';
 import classes from './Switcher.module.scss'
 
-function Switcher({idHtml}) {
+function Switcher({idHtml, onClick}) {
     return (
         <div className={classes.switcher}>
             <input type="checkbox" id={idHtml} />
-            <label htmlFor={idHtml}></label>
+            <label onClick={onClick} htmlFor={idHtml}></label>
         </div>
     );
 }

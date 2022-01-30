@@ -1,7 +1,8 @@
-import { switch_filtres } from "./types"
+import { switch_filtres, switch_filtres_with_photo } from "./types"
 
 const initialState = {
     active: false,
+    photo: false
 }
 
 export const switchFiltres = (state = initialState, action) => {
@@ -12,6 +13,12 @@ export const switchFiltres = (state = initialState, action) => {
                 active: !state.active
             }
 
+        case switch_filtres_with_photo:
+            return {
+                ...state,
+                photo: !state.photo
+            }
+            
         default: return state
     }
 }
