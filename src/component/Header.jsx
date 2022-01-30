@@ -12,7 +12,10 @@ function Header() {
             <div className='conteiner_for_header'>
                 <div className='top_bar'>
                     <div className='role_menu'>
-                        <span onClick={(e) => setIsActiveRole(!isActiveRole)}>Соискатель<span className='arrow'/></span>
+                        <span onClick={(e) => setIsActiveRole(!isActiveRole)}>
+                            Соискатель
+                            <span className='arrow'/>
+                        </span>
                         <ul className={isActiveRole ? 'show' : 'hide'}>
                             <li>Соискатель</li>
                             <li>Работодатель</li>

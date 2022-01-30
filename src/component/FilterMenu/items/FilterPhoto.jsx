@@ -13,9 +13,11 @@ function FilterPhoto() {
 
     const switchPhoto = () => {
         dispatch(switchFiltresPhoto())
+        dispatch(changeCurrentPage(1))
         
         if(!switcherPhoto) {
-            dispatch(fetchSumarriesWhithPhoto())
+            setTimeout(()=>dispatch(fetchSumarriesWhithPhoto()), 1000)
+            
         } else {
             dispatch(fetchSumarries())
         }
