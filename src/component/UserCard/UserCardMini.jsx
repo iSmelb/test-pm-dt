@@ -17,7 +17,7 @@ function UserCardMini({summary}) {
                 <div className='main_info'>
                     <h3>{summary.category}</h3>
                     <p>Дмитрий, 23 года</p>
-                    <p style={{fontSize: '13px'}}>
+                    <p>
                         <FontAwesomeIcon style={{marginRight: '12px'}} icon={faMapMarkerAlt}/>
                         Kyiv, Ukraine
                     </p>
@@ -36,13 +36,13 @@ function UserCardMini({summary}) {
             <div className='like_or_hide'>
                 <div className='like'>
                     {like 
-                        ? <FontAwesomeIcon onClick={() => setLike(!like)} style={{marginRight: '22px', color: 'red', fontSize: '27px'}} icon={faHeart}/>
-                        : <FontAwesomeIcon onClick={() => setLike(!like)} style={{marginRight: '22px', color: 'red', fontSize: '27px' }} icon={faHeartRegular}/>
+                        ? <FontAwesomeIcon onClick={() => setLike(!like)} style={{ color: 'red', fontSize: '27px'}} icon={faHeart}/>
+                        : <FontAwesomeIcon onClick={() => setLike(!like)} style={{ color: 'red', fontSize: '27px' }} icon={faHeartRegular}/>
                     }
                 </div>
-                <div className='hide'>
-                    <FontAwesomeIcon onClick={() => setSettings(!settings)} icon={faEllipsisV}/>
-                    <div className={`settings ${settings === false && 'hide'}`}>
+                <div className='hide' onClick={() => setSettings(!settings)}>
+                    <FontAwesomeIcon icon={faEllipsisV}/>
+                    <div className={`settings ${!settings ? 'hide' : ''}`}>
                         <p>Пожаловаться</p>
                         <p>Скрыть карндидата</p>
                     </div>

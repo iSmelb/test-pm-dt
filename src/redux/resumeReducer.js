@@ -1,9 +1,10 @@
-import { change_current_page, loading_summaries, loading_summariesWithPhoto } from "./types"
+import { change_current_page, error_fetch, loading_summaries, loading_summariesWithPhoto } from "./types"
 
 const initialState = {
     fetchedSummaries: [],
     pageCount: 0,
-    currentPage: 1
+    currentPage: 1,
+    error: false
 }
 
 export const resumeReducer = (state = initialState, action) => {
@@ -12,7 +13,8 @@ export const resumeReducer = (state = initialState, action) => {
             return {
                 ...state,
                 fetchedSummaries: action.payload.results,
-                pageCount: action.payload.page_count
+                pageCount: action.payload.page_count,
+                error: false
             }
 
         case loading_summariesWithPhoto:
@@ -20,6 +22,13 @@ export const resumeReducer = (state = initialState, action) => {
                 ...state,
                 fetchedSummaries: action.payload.results,
                 pageCount: action.payload.page_count,
+                error: false
+            }
+
+        case error_fetch:
+            return {
+                ...state,
+                error: action.error
             }
             
         case change_current_page:

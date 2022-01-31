@@ -3,7 +3,10 @@ import { Slider } from '@material-ui/core';
 import Switcher from '../../UI/Switcher/Switcher';
 
 function FilterOffer() {
-    const [paypal, setPaypal] = useState([20, 30])
+    const min = 10000
+    const max = 100000
+    const step = 1000
+    const [paypal, setPaypal] = useState([min, max])
 
     const changePaypal = (event, value) => {
         setPaypal(value)
@@ -14,16 +17,17 @@ function FilterOffer() {
             <h4>Желаемая зарплата</h4>
             <span className='underline' />
             <Slider
-                min={18}
-                max={40}
+                min={min}
+                max={max}
+                step={step}
                 value={paypal}
                 onChange={changePaypal}
             />
             <p>
                 От
-                <input type='number' />
+                <input type='number' value={paypal[0]} onChange={(e) => setPaypal([e.target.value, paypal[1]])}/>
                 до
-                <input type='number' />
+                <input type='number' value={paypal[1]} onChange={(e) => setPaypal([paypal[0], e.target.value])}/>
                 <span>
                     грн
                     <span className='arrow'/>

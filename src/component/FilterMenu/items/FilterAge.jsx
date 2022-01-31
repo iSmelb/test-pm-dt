@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import { Slider } from '@material-ui/core';
 
 function FilterAge() {
-    const [age, setAge] = useState([20,30])
+    const min = 18
+    const max = 40
+    const step = 1
+    const [age, setAge] = useState([min,max])
 
     const changeAge = (event, value) => {
         setAge(value)
@@ -20,9 +23,9 @@ function FilterAge() {
             />
             <p>
                 От
-                <input type='number' />
+                <input type='number'  value={age[0]} onChange={(e) => setAge([e.target.value, age[1]])} />
                 до
-                <input type='number' />
+                <input type='number' value={age[1]} onChange={(e) => setAge([age[0], e.target.value])}/>
                 Лет
             </p>
         </div>

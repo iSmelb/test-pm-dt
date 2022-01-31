@@ -1,6 +1,7 @@
 import { faSlidersH } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect } from 'react';
+import ReactPaginate from 'react-paginate';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMemoizations } from '../hooks/useMemoizations';
 import { changeCurrentPage, fetchSumarries, switchFiltresStatus } from '../redux/actions';
@@ -14,6 +15,7 @@ function HomePage() {
     const pageCount = useSelector(state => state.summaries.pageCount)
     const summaries = useSelector(state => state.summaries.fetchedSummaries)
     const loading = useSelector(state => state.app.loading)
+    const errorFetch = useSelector(state => state.summaries.error)
     let pagesArray = useMemoizations(pageCount)
     const dispatch = useDispatch()
 
@@ -21,7 +23,8 @@ function HomePage() {
         dispatch(fetchSumarries(currentPage))
     }, [currentPage])
 
-    const changePage = (page) => {
+    const changePage = (data) => {
+        let page = data.selected + 1
         dispatch(changeCurrentPage(page))
     }
 
@@ -37,36 +40,37 @@ function HomePage() {
                         <div className='settings_filter'
                             onClick={() => {
                                 dispatch(switchFiltresStatus())
-                                document.body.classList.toggle('stop-scrolling')
+                                document.body.classList.add('stop-scrolling')
                             }} >
                             <FontAwesomeIcon icon={faSlidersH} />
                         </div>
                     </div>
                 </div>
-                {loading
-                    ? <div><Loader/></div>
-                    : summaries.map(summary => <UserCardMini key={summary.id} summary={summary} />)
-                }
-                <FilterMenu />
+                <div className='cards_and_filter_menu'>
+                    <div className='cards'>
+                        {summaries.length === 0 && <span className='nothing_items'>Ничего не найдено</span>}
+                        {loading
+                            ? <div><Loader /></div>
+                            : summaries.map(summary => <UserCardMini key={summary.id} summary={summary} />)
+                        }
+                        {errorFetch && <span className='error'>{errorFetch}</span>}
+                    </div>
+                    <div className='filter_menu_conteiner'>
+                        <FilterMenu />
+                    </div>
+                </div>
                 <div className='pages'>
-                    <button
-                        onClick={() => changePage(currentPage - 1)}
-                        className='prev'
-                        disabled={currentPage === 1 && true}
-                    />
-                    {pagesArray.map(p =>
-                        <span
-                            key={p}
-                            className={currentPage === p ? 'current_page' : 'page'}
-                            onClick={ () => changePage(p)}
-                        >
-                            {p}
-                        </span>)}
-                    <button
-                        onClick={() => changePage(currentPage + 1)}
-                        className='next'
-                        disabled={currentPage === pageCount && true}
-                    />
+                    {
+                        <ReactPaginate
+                            className='pagination'
+                            nextLabel=""
+                            previousLabel=""
+                            onPageChange={changePage}
+                            pageCount={pageCount}
+                            pageRangeDisplayed={1}
+                            marginPagesDisplayed={2}
+                        />
+                    }
                 </div>
             </div>
         </main>

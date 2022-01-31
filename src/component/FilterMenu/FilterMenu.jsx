@@ -15,11 +15,18 @@ function FilterMenu() {
     const statusFilter = useSelector(state => state.switchFiltres.active)
     const dispatch = useDispatch()
 
+    window.addEventListener('resize', ()=> {
+        if(window.innerWidth >= 1024) {
+            document.body.classList.remove('stop-scrolling')
+        }
+    })
+
     return (
-        <div className={`filter_menu ${!statusFilter && 'hide'}`}>
+        <div className={`filter_menu_block ${!statusFilter ? 'hide' : ''}`}>
+            <div className='filter_menu'>
             <div className='closeMenu' onClick={() => {
                 dispatch(switchFiltresStatus())
-                document.body.classList.toggle('stop-scrolling')
+                document.body.classList.remove('stop-scrolling')
             }} >
                 <span />
                 <span />
@@ -33,6 +40,7 @@ function FilterMenu() {
             <FilterLanguage />
             <FilterEmployment />
             <FilterEducation />
+        </div>
         </div>
     )
 }

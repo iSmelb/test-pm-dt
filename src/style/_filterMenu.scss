@@ -1,7 +1,4 @@
-.filter_menu {
-    background-color: #fff;
-    color: $color_dakr;
-    padding: 20px 20px 35px;
+.filter_menu_block {
     left: 0;
     z-index: 3;
     position: fixed;
@@ -11,12 +8,32 @@
     overflow: auto;
     transform: translate(0);
     transition: transform 0.5s ease;
+    background-color: rgba(0, 0, 0, 0.63);
+
+    @media (min-width: 1024px) {
+        position: static;
+        height: auto;
+        z-index: 0;
+        background: none;
+    }
 
     &.hide {
         transform: translateX(-100%);
-        transition: all 0.5s ease;
-    }
+        transition: transform 0.5s ease;
 
+        @media (min-width: 1024px) {
+            transform: translate(0);
+        }
+    }
+}
+
+.filter_menu {
+    background-color: #fff;
+    max-width: 550px;
+    margin: 0 auto;
+    color: $color_dakr;
+    padding: 20px 20px 35px;
+    
     > div:nth-of-type(n+2) {
         margin-bottom: 15px;
     }
@@ -29,6 +46,10 @@
         margin-bottom: 30px;
         position: relative;
         box-shadow: 0 0 20px rgba(13, 74, 145, 0.15);
+
+        @media (min-width: 1024px) {
+            display: none;
+        }
 
         &::after,
         &::before {
@@ -75,6 +96,7 @@
         display: flex;
         justify-content: space-between;
         padding: 18px;
+        background: $color_bg_light;
     }
 
     .MuiSlider-root {
@@ -104,7 +126,14 @@
     .filter_language,
     .filter_employment,
     .filter_education {
+        background: $color_bg_light;
         padding: 14px;
+
+        @media (min-width: 1024px) {
+            h4 {
+                font-size: $base_fz_mob + 4px;
+            }
+        }
     }
 
     .filter_age,
@@ -127,6 +156,11 @@
 
     .filter_gender {
 
+        .button_conteiner {
+            width: 307px;
+            margin: 0 auto;
+        }
+
         h4 {
             color: $color_dakr_blue;
         }
@@ -134,11 +168,10 @@
         button {
             font-size: $base_fz_mob - 2px;
             padding: 14px 12px;
-            width: 100px;
+            width: 102px;
             border: none;
             border: 1px solid $color_dakr_blue;
             background: none;
-            margin: 0 auto;
 
             &:nth-of-type(2) {
                 border-width: 1px 0;
@@ -147,6 +180,7 @@
             &:hover {
                 color: #fff;
                 background-color: $color_dakr_blue;
+                cursor: pointer;
             }
 
             .active {
@@ -229,6 +263,7 @@
             .arrow {
                 border-color: $color_dakr;
                 right: -33px;
+                cursor: pointer;
 
                 &.reverse {
                     top: 4px;
@@ -265,6 +300,10 @@
                 justify-content: space-between;
                 padding: 5px;
                 margin-bottom: 13px;
+            }
+
+            label {
+                cursor: pointer;
             }
         }
     }

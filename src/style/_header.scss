@@ -9,10 +9,20 @@
     justify-content: space-between;
     flex-direction: row-reverse;
     position: relative;
+
+    @media (min-width: 1024px) {
+        flex-direction: row;
+    }
 }
 
 .role_menu {
     margin-right: 10px;
+
+    @media (min-width: 1024px) {
+        span {
+            display: none;
+        }
+    }
 }
 
 .role_menu,
@@ -32,7 +42,8 @@
         }    
     }
 
-    ul.show {
+    ul {
+        display: none;
         list-style: none;
         position: absolute;
         top: 17px;
@@ -52,17 +63,72 @@
         }
     }
 
+    ul.show {
+        display: block;
+    }
+
     ul.hide {
         display: none;
+    }
+}
+
+.role_menu {
+    ul {
+        
+        @media (min-width: 1024px) {
+            display: block;
+            position: static;
+            border: none;
+            background: none;
+        }
+
+        li {
+            @media (min-width: 1024px) {
+                padding: 0;
+                display: inline-block;
+                margin-right: 30px;
+                position: relative;
+
+                &:not(:last-of-type)::after {
+                    content: '';
+                    position: absolute;
+                    width: 1px;
+                    height: 17px;
+                    top:0;
+                    left: calc(100% + 15px);
+                    background: #fff;
+                }
+                &:hover {
+    
+                    @media (min-width: 1024px) {
+                        text-decoration: underline;
+                        background: none;
+                    }
+                }
+            }
+        }
     }
 }
 
 .language {
     font-weight: 300;
     color: $color_stroke;
+
+    > span {
+        font-size: $base_fz_mob - 4px;
+
+        @media (min-width: 1024px) {
+            font-size: $base_fz_mob - 2px;
+        }
+    }
+    
 }
 
 .lang_login {
+
+    @media (min-width: 1024px) {
+        display: flex;
+    }
     
     .logout {
         position: absolute;
@@ -70,16 +136,37 @@
         left: 50%;
         transform: translateX(-50%);
         font-size: $base_fz_mob - 2px;
+
+        @media (min-width: 1024px) {
+            display: none;
+        }
     }
 
     .login {
         display: none;
+
+        @media (min-width: 1024px) {
+            display: block;
+            margin-left: 25px;
+            text-decoration: underline;
+            font-weight: 500;
+        }
     }
 }
 
 
 .search_bar {
     margin-top: 63px;
+
+    @media (min-width: 700px) {
+        display: flex;
+        max-width: 850px;
+        margin: 85px auto 0;
+    }
+
+    svg {
+        vertical-align: middle;
+    }
 
     .searchInput,
     .searchInputCity {
@@ -89,6 +176,14 @@
         padding: 12px;
         background-color: rgba(255, 255, 255, 0.15);
         margin-bottom: 12px;
+
+        @media (min-width: 700px) {
+            margin: 0 8px 0 0;
+        }
+
+        @media (min-width: 1024px) {
+            font-size: $base_fz_mob - 2px
+        }
 
         .searchIcon:hover {
             color: rgb(199, 199, 199);
@@ -110,6 +205,19 @@
         }
     }
 
+    .searchInput {
+        @media (min-width: 700px) {
+            width: auto;
+            flex-grow: 1;
+        }
+    }
+
+    .searchInputCity {
+        @media (min-width: 700px) {
+            width: 205px;
+        }
+    }
+
     .searchButton {
         width: 100%;
         padding: 14px;
@@ -118,6 +226,10 @@
         border-radius: 8px;
         text-align: center;
         font-weight: 600;
+
+        @media (min-width: 700px) {
+            width: 200px;
+        }
 
         &:hover {
             background-color: rgb(199, 199, 199);
