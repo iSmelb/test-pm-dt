@@ -69,6 +69,7 @@ function HomePage() {
                             pageCount={pageCount}
                             pageRangeDisplayed={1}
                             marginPagesDisplayed={2}
+                            forcePage={currentPage - 1}
                         />
                     }
                 </div>

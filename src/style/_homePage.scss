@@ -97,6 +97,7 @@
             background: #F4F6FC;
             border-radius: 8px;
             position: relative;
+            cursor: pointer;
 
             @media (min-width: 1024px) {
                 display: none;
@@ -386,6 +387,7 @@
     li {
         margin-right: 14px;
         color: #A6A6A6;
+        cursor: pointer;
 
         &.next,
         &.previous {
